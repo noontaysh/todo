@@ -8,4 +8,6 @@ let reducers = combineReducers({
 // noinspection JSDeprecatedSymbols
 let store = createStore(reducers)
 
+window.store = store
+
 export default store

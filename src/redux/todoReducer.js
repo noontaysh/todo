@@ -19,7 +19,7 @@ const todoReducer = (state = initialState, action) => {
                 ...state,
                 todoData: [
                     ...state.todoData,
-                    {content: action.content}
+                    {content: action.content, markedDone: false}
                 ]
             }
         case DELETE_TASK:
@@ -37,6 +37,8 @@ const todoReducer = (state = initialState, action) => {
                 ...state,
                 todoData: updateArrayObject(state.todoData, action.taskId, 'id', {markedDone: false})
             }
+        default:
+            return state
     }
 }
 
