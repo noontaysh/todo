@@ -1,9 +1,14 @@
-import React from 'react';
-import {Field, Form, Formik} from "formik";
+import React, {useId} from 'react';
+import {Form, Formik} from "formik";
 import CustomInput from "./CustomInput";
 import {schema} from "../utilities/objectHelpers";
+import TaskComponent from "./TaskComponent";
 
-const TodoForm = (props) => {
+const TodoForm = React.memo(props => {
+    let todoElements = props.todoData.map((t, i) => (
+        <TaskComponent key={i} id={t.id} content={t.content} markedDone={t.markedDone} {...props}/>
+    ))
+
     const onSubmit = (values, action) => {
         props.addTask(values.content)
         setTimeout(() => {
@@ -24,8 +29,9 @@ const TodoForm = (props) => {
                     </Form>
                 )}
             </Formik>
+            <div>{todoElements}</div>
         </div>
     );
-};
+});
 
 export default TodoForm;

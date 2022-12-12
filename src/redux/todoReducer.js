@@ -1,5 +1,6 @@
 import React from "react";
 import {updateArrayObject} from "../utilities/objectHelpers";
+import { v4 as uuidv4 } from 'uuid';
 
 const ADD_TASK = 'ADD_TASK'
 const DELETE_TASK = 'DELETE_TASK'
@@ -7,11 +8,10 @@ const MARK_DONE = 'MARK_DONE'
 const UN_MARK = 'UN_MARK'
 
 let initialState = {
-    todoData: [
-        {id: 1, content: 'smth', markedDone: false}
-    ]
+    todoData: []
 }
 
+// state.todoData.some(el => el.id === state.todoData.length || el.id === state.todoData.length + 1) ? state.todoData.length + 2 : state.todoData.length
 const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TASK:
@@ -19,7 +19,7 @@ const todoReducer = (state = initialState, action) => {
                 ...state,
                 todoData: [
                     ...state.todoData,
-                    {content: action.content, markedDone: false}
+                    {id: uuidv4() ,content: action.content, markedDone: false}
                 ]
             }
         case DELETE_TASK:
