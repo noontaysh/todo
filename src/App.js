@@ -1,8 +1,11 @@
 import TodoContainer from "./components/TodoContainer";
+import './stylization/App.css'
 
 function App() {
     return (
-        <TodoContainer />
+        <div className='app-wrapper'>
+            <TodoContainer />
+        </div>
     )
 }
 

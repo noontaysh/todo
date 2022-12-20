@@ -3,6 +3,7 @@ import {Form, Formik} from "formik";
 import CustomInput from "./CustomInput";
 import {schema} from "../utilities/objectHelpers";
 import TaskComponent from "./TaskComponent";
+import '../stylization/TodoForm.css'
 
 const TodoForm = React.memo(props => {
     let todoElements = props.todoData.map((t, i) => (
@@ -16,7 +17,7 @@ const TodoForm = React.memo(props => {
         }, 1000)
     }
     return (
-        <div>
+        <div className='todoForm'>
             <Formik
                 initialValues={{content: ''}}
                 validationSchema={schema}
@@ -24,8 +25,8 @@ const TodoForm = React.memo(props => {
             >
                 {({isSubmitting}) => (
                     <Form>
-                        <CustomInput label='' name='content' type='text' placeholder='Enter your ToDo thing'/>
-                        <button disabled={isSubmitting} type='submit'>Submit</button>
+                        <CustomInput disabled={isSubmitting} label='' name='content' type='text' placeholder='Enter your ToDo thing'/>
+                        <button className='submitButton' disabled={isSubmitting} type='submit'>Submit</button>
                     </Form>
                 )}
             </Formik>

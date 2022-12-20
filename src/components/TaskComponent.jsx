@@ -1,10 +1,11 @@
 import React from 'react';
+import '../stylization/TaskComponent.css'
 
 const TaskComponent = (props) => {
     return (
-        <div>
+        <div className='taskComponent'>
             <h3>{props.content}</h3>
-            <p>{props.id}</p>
+            {/*<p>{props.id}</p>*/}
             {props.markedDone ? (<input type="checkbox" onClick={() => {
                 props.unMark(props.id)
             }} checked={true}/>) : (<input type="checkbox" onClick={() => {
